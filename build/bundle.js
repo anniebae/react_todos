@@ -9453,6 +9453,10 @@ var _react = __webpack_require__(31);
 
 var _react2 = _interopRequireDefault(_react);
 
+var _createTodo = __webpack_require__(185);
+
+var _createTodo2 = _interopRequireDefault(_createTodo);
+
 var _todosList = __webpack_require__(82);
 
 var _todosList2 = _interopRequireDefault(_todosList);
@@ -9498,6 +9502,7 @@ var App = function (_Component) {
 					null,
 					'live ToDos App updated'
 				),
+				_react2.default.createElement(_createTodo2.default, null),
 				_react2.default.createElement(_todosList2.default, { todos: this.state.todos })
 			);
 		}
@@ -39086,13 +39091,53 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var TodosListItem = function (_Component) {
 	_inherits(TodosListItem, _Component);
 
-	function TodosListItem() {
+	function TodosListItem(props) {
 		_classCallCheck(this, TodosListItem);
 
-		return _possibleConstructorReturn(this, (TodosListItem.__proto__ || Object.getPrototypeOf(TodosListItem)).apply(this, arguments));
+		var _this = _possibleConstructorReturn(this, (TodosListItem.__proto__ || Object.getPrototypeOf(TodosListItem)).call(this, props));
+
+		_this.state = {
+			isEditing: false
+		};
+		return _this;
 	}
 
 	_createClass(TodosListItem, [{
+		key: 'renderActionSection',
+		value: function renderActionSection() {
+			if (this.state.isEditing) {
+				return _react2.default.createElement(
+					'td',
+					null,
+					_react2.default.createElement(
+						'button',
+						null,
+						'Save'
+					),
+					_react2.default.createElement(
+						'button',
+						null,
+						'Cancel'
+					)
+				);
+			}
+
+			return _react2.default.createElement(
+				'td',
+				null,
+				_react2.default.createElement(
+					'button',
+					{ onClick: this.onEditClick.bind(this) },
+					'Edit'
+				),
+				_react2.default.createElement(
+					'button',
+					null,
+					'Delete'
+				)
+			);
+		}
+	}, {
 		key: 'render',
 		value: function render() {
 			return _react2.default.createElement(
@@ -39103,21 +39148,13 @@ var TodosListItem = function (_Component) {
 					null,
 					this.props.task
 				),
-				_react2.default.createElement(
-					'td',
-					null,
-					_react2.default.createElement(
-						'button',
-						null,
-						'Edit'
-					),
-					_react2.default.createElement(
-						'button',
-						null,
-						'Delete'
-					)
-				)
+				this.renderActionSection()
 			);
+		}
+	}, {
+		key: 'onEditClick',
+		value: function onEditClick() {
+			this.setState({ isEditing: true });
 		}
 	}]);
 
@@ -39125,6 +39162,61 @@ var TodosListItem = function (_Component) {
 }(_react.Component);
 
 exports.default = TodosListItem;
+
+/***/ }),
+/* 185 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(31);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var CreateTodo = function (_Component) {
+	_inherits(CreateTodo, _Component);
+
+	function CreateTodo() {
+		_classCallCheck(this, CreateTodo);
+
+		return _possibleConstructorReturn(this, (CreateTodo.__proto__ || Object.getPrototypeOf(CreateTodo)).apply(this, arguments));
+	}
+
+	_createClass(CreateTodo, [{
+		key: "render",
+		value: function render() {
+			return _react2.default.createElement(
+				"form",
+				null,
+				_react2.default.createElement("input", { type: "text", placeholder: "What!" }),
+				_react2.default.createElement(
+					"button",
+					null,
+					"Create"
+				)
+			);
+		}
+	}]);
+
+	return CreateTodo;
+}(_react.Component);
+
+exports.default = CreateTodo;
 
 /***/ })
 /******/ ]);

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import TodosList from './todos-list'
+import CreateTodo from './create-todo';
+import TodosList from './todos-list';
 
 const todos = [
 	{
@@ -24,6 +25,7 @@ class App extends Component {
 		return (
 			<div>
 				<h1>live ToDos App updated</h1>
+				<CreateTodo />
 				<TodosList todos={this.state.todos} />
 			</div>
 		)
