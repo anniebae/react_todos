@@ -1,15 +1,11 @@
 import React, { Component } from 'react'
+import TodosListHeader from './todos-list-header'
 
 class TodosList extends Component {
 	render() {
 		return (
 			<table>
-				<thead>
-					<tr>
-						<th>Task</th>
-						<th>Action</th>
-					</tr>
-				</thead>
+				<TodosListHeader />
 			</table>
 		)
 	}
