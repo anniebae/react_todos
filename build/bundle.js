@@ -39116,7 +39116,7 @@ var TodosListItem = function (_Component) {
 					),
 					_react2.default.createElement(
 						'button',
-						null,
+						{ onClick: this.onCancelClick.bind(this) },
 						'Cancel'
 					)
 				);
@@ -39155,6 +39155,11 @@ var TodosListItem = function (_Component) {
 		key: 'onEditClick',
 		value: function onEditClick() {
 			this.setState({ isEditing: true });
+		}
+	}, {
+		key: 'onCancelClick',
+		value: function onCancelClick() {
+			this.setState({ isEditing: false });
 		}
 	}]);
 
