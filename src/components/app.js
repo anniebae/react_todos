@@ -13,11 +13,18 @@ const todos = [
 ];
 
 class App extends Component {
+	constructor(props) {
+		super(props);
+
+		this.state = {
+			todos: todos
+		};
+	}
 	render() {
 		return (
 			<div>
 				<h1>live ToDos App updated</h1>
-				<TodosList />
+				<TodosList todos={this.state.todos} />
 			</div>
 		)
 	}

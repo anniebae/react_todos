@@ -9476,10 +9476,15 @@ var todos = [{
 var App = function (_Component) {
 	_inherits(App, _Component);
 
-	function App() {
+	function App(props) {
 		_classCallCheck(this, App);
 
-		return _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).apply(this, arguments));
+		var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));
+
+		_this.state = {
+			todos: todos
+		};
+		return _this;
 	}
 
 	_createClass(App, [{
@@ -9493,7 +9498,7 @@ var App = function (_Component) {
 					null,
 					'live ToDos App updated'
 				),
-				_react2.default.createElement(_todosList2.default, null)
+				_react2.default.createElement(_todosList2.default, { todos: this.state.todos })
 			);
 		}
 	}]);
@@ -9554,6 +9559,8 @@ var TodosList = function (_Component) {
 	_createClass(TodosList, [{
 		key: 'render',
 		value: function render() {
+			console.log(this.props);
+
 			return _react2.default.createElement(
 				'table',
 				null,
