@@ -11,7 +11,7 @@ class TodosListItem extends Component {
 
 	renderActionSection() {
 		if (this.state.isEditing) {
-			return(
+			return (
 				<td>
 					<button>Save</button>
 					<button onClick={this.onCancelClick.bind(this)}>Cancel</button>
@@ -19,7 +19,7 @@ class TodosListItem extends Component {
 			)
 		}
 
-		return(
+		return (
 			<td>
 				<button onClick={this.onEditClick.bind(this)}>Edit</button>
 				<button>Delete</button>

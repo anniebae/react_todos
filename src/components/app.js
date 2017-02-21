@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
-import CreateTodo from './create-todo';
-import TodosList from './todos-list';
+import React, { Component } from 'react'
+import CreateTodo from './create-todo'
+import TodosList from './todos-list'
 
 const todos = [
 	{
 		task: 'make React tutorial',
-		isCompleted: false,
+		isCompleted: false
 	},
 	{
 		task: 'eat dinner',
@@ -13,23 +13,25 @@ const todos = [
 	}
 ];
 
+
 class App extends Component {
 	constructor(props) {
 		super(props);
 
 		this.state = {
-			todos: todos
+			todos
 		};
 	}
+
 	render() {
-		return (
+		return(
 			<div>
-				<h1>live ToDos App updated</h1>
+				<h1>React todos app</h1>
 				<CreateTodo />
 				<TodosList todos={this.state.todos} />
 			</div>
-		)
+		);
 	}
 }
 
-export default App;
+export default App

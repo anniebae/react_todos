@@ -2,11 +2,11 @@ import React, { Component } from 'react'
 
 class TodosListHeader extends Component {
 	render() {
-		return (
+		return(
 			<thead>
 				<tr>
 					<th>Task</th>
-					<th>Action</th>
+					<th>Actions</th>
 				</tr>
 			</thead>
 		)

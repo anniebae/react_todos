@@ -3,13 +3,13 @@ var path = require("path");
 
 module.exports = {
 	entry: {
-		app: './src'
+		app: "./src/index.js"
 	},
 	output: {
-		filename: 'build/bundle.js',
-		sourceMapFilename: 'build/bundle.map'
+		filename: "build/bundle.js",
+		sourceMapFilename: "build/bundle.map"
 	},
-	devtool: '#source-map,',
+	devtool: "#source-map",
 	module: {
 		loaders: [
 			{
