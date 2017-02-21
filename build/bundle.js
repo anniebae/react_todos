@@ -39124,9 +39124,14 @@ var TodosListItem = function (_Component) {
 			    isCompleted = _props.isCompleted;
 
 
+			var taskStyle = {
+				color: isCompleted ? 'green' : 'red',
+				cursor: 'pointer'
+			};
+
 			return _react2.default.createElement(
 				'td',
-				null,
+				{ style: taskStyle },
 				task
 			);
 		}
