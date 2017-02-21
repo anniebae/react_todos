@@ -21766,9 +21766,22 @@ var App = function (_Component) {
 					null,
 					'React todos app'
 				),
-				_react2.default.createElement(_createTodo2.default, null),
-				_react2.default.createElement(_todosList2.default, { todos: this.state.todos })
+				_react2.default.createElement(_createTodo2.default, {
+					createTask: this.createTask.bind(this)
+				}),
+				_react2.default.createElement(_todosList2.default, {
+					todos: this.state.todos
+				})
 			);
+		}
+	}, {
+		key: 'createTask',
+		value: function createTask(task) {
+			this.state.todos({
+				task: task,
+				isCompleted: false
+			});
+			this.setState({ todos: this.state.todos });
 		}
 	}]);
 
@@ -39222,7 +39235,8 @@ var CreateTodos = function (_Component) {
 		key: "handleCreate",
 		value: function handleCreate(event) {
 			event.preventDefault();
-			console.log(this.refs.createInput.value);
+
+			console.log(this.props.createTask);
 		}
 	}]);
 

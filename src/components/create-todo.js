@@ -13,8 +13,9 @@ class CreateTodos extends Component {
 	}
 
 	handleCreate(event) {
-		event.preventDefault()
-		console.log(this.refs.createInput.value)
+		event.preventDefault();
+
+		console.log(this.props.createTask)
 	}
 }
 
