@@ -39237,6 +39237,7 @@ var CreateTodos = function (_Component) {
 			event.preventDefault();
 
 			this.props.createTask(this.refs.createInput.value);
+			this.refs.createInput.value = '';
 		}
 	}]);
 
