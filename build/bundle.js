@@ -39119,10 +39119,15 @@ var TodosListItem = function (_Component) {
 	_createClass(TodosListItem, [{
 		key: 'renderTaskSection',
 		value: function renderTaskSection() {
+			var _props = this.props,
+			    task = _props.task,
+			    isCompleted = _props.isCompleted;
+
+
 			return _react2.default.createElement(
 				'td',
 				null,
-				this.props.task
+				task
 			);
 		}
 	}, {
