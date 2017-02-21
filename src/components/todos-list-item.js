@@ -12,13 +12,19 @@ class TodosListItem extends Component {
 	renderTaskSection() {
 		const { task, isCompleted } = this.props;
 
+		console.log(this.props)
+
 		const taskStyle = {
 			color: isCompleted ? 'green' : 'red',
 			cursor: 'pointer'
 		}
 
 		return (
-			<td style={taskStyle}>{task}</td>
+			<td style={taskStyle}
+				onClick={this.props.toggleTask.bind(this, task)}
+			>
+				{task}
+			</td>
 		)
 	}
 

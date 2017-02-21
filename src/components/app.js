@@ -31,10 +31,17 @@ class App extends Component {
 					createTask={this.createTask.bind(this)}
 				/>
 				<TodosList 
-					todos={this.state.todos} 
+					todos={this.state.todos}
+					toggleTask={this.toggleTask.bind(this)} 
 				/>
 			</div>
 		);
+	}
+
+	toggleTask(task) {
+		const foundTodo = _.find(this.state.todos, todo => todo.task === task);
+		foundTodo.isCompleted = !foundTodo.isCompleted;
+		this.setState({ todos: this.state.todos });
 	}
 
 	createTask(task) {

@@ -21770,9 +21770,19 @@ var App = function (_Component) {
 					createTask: this.createTask.bind(this)
 				}),
 				_react2.default.createElement(_todosList2.default, {
-					todos: this.state.todos
+					todos: this.state.todos,
+					toggleTask: this.toggleTask.bind(this)
 				})
 			);
+		}
+	}, {
+		key: 'toggleTask',
+		value: function toggleTask(task) {
+			var foundTodo = _.find(this.state.todos, function (todo) {
+				return todo.task === task;
+			});
+			foundTodo.isCompleted = !foundTodo.isCompleted;
+			this.setState({ todos: this.state.todos });
 		}
 	}, {
 		key: 'createTask',
@@ -21841,8 +21851,10 @@ var TodosList = function (_Component) {
 	_createClass(TodosList, [{
 		key: 'renderItems',
 		value: function renderItems() {
+			var props = _lodash2.default.omit(this.props, 'todos');
+
 			return _lodash2.default.map(this.props.todos, function (todo, index) {
-				return _react2.default.createElement(_todosListItem2.default, _extends({ key: index }, todo));
+				return _react2.default.createElement(_todosListItem2.default, _extends({ key: index }, todo, props));
 			});
 		}
 	}, {
@@ -39124,6 +39136,8 @@ var TodosListItem = function (_Component) {
 			    isCompleted = _props.isCompleted;
 
 
+			console.log(this.props);
+
 			var taskStyle = {
 				color: isCompleted ? 'green' : 'red',
 				cursor: 'pointer'
@@ -39131,7 +39145,9 @@ var TodosListItem = function (_Component) {
 
 			return _react2.default.createElement(
 				'td',
-				{ style: taskStyle },
+				{ style: taskStyle,
+					onClick: this.props.toggleTask.bind(this, task)
+				},
 				task
 			);
 		}
