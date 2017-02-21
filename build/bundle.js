@@ -39117,6 +39117,15 @@ var TodosListItem = function (_Component) {
 	}
 
 	_createClass(TodosListItem, [{
+		key: 'renderTaskSection',
+		value: function renderTaskSection() {
+			return _react2.default.createElement(
+				'td',
+				null,
+				this.props.task
+			);
+		}
+	}, {
 		key: 'renderActionSection',
 		value: function renderActionSection() {
 			if (this.state.isEditing) {
@@ -39157,11 +39166,7 @@ var TodosListItem = function (_Component) {
 			return _react2.default.createElement(
 				'tr',
 				null,
-				_react2.default.createElement(
-					'td',
-					null,
-					this.props.task
-				),
+				this.renderTaskSection(),
 				this.renderActionSection()
 			);
 		}

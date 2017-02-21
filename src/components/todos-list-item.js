@@ -9,6 +9,12 @@ class TodosListItem extends Component {
 		};
 	}
 
+	renderTaskSection() {
+		return (
+			<td>{this.props.task}</td>
+		)
+	}
+
 	renderActionSection() {
 		if (this.state.isEditing) {
 			return (
@@ -30,7 +36,7 @@ class TodosListItem extends Component {
 	render() {
 		return(
 			<tr>
-				<td>{this.props.task}</td>
+				{this.renderTaskSection()}
 				{this.renderActionSection()}
 			</tr>
 		)
