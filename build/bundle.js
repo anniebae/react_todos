@@ -21777,7 +21777,7 @@ var App = function (_Component) {
 	}, {
 		key: 'createTask',
 		value: function createTask(task) {
-			this.state.todos({
+			this.state.todos.push({
 				task: task,
 				isCompleted: false
 			});
@@ -39236,7 +39236,7 @@ var CreateTodos = function (_Component) {
 		value: function handleCreate(event) {
 			event.preventDefault();
 
-			console.log(this.props.createTask);
+			this.props.createTask(this.refs.createInput.value);
 		}
 	}]);
 
