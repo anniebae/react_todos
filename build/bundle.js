@@ -9508,7 +9508,8 @@ var App = function (_Component) {
 				_react2.default.createElement(_todosList2.default, {
 					todos: this.state.todos,
 					toggleTask: this.toggleTask.bind(this),
-					saveTask: this.saveTask.bind(this)
+					saveTask: this.saveTask.bind(this),
+					deleteTask: this.deleteTask.bind(this)
 				})
 			);
 		}
@@ -9537,6 +9538,14 @@ var App = function (_Component) {
 				return todo.task === oldTask;
 			});
 			foundTodo.task = newTask;
+			this.setState({ todos: this.state.todos });
+		}
+	}, {
+		key: 'deleteTask',
+		value: function deleteTask(taskToDelete) {
+			_.remove(this.state.todos, function (todo) {
+				return todo.task === taskToDelete;
+			});
 			this.setState({ todos: this.state.todos });
 		}
 	}]);
@@ -9787,7 +9796,7 @@ var TodosListItem = function (_Component) {
 				),
 				_react2.default.createElement(
 					'button',
-					null,
+					{ onClick: this.props.deleteTask.bind(this, this.props.task) },
 					'Delete'
 				)
 			);
