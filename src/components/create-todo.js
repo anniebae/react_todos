@@ -5,7 +5,7 @@ class CreateTodo extends Component {
 		return(
 			<form onSubmit={this.handleCreate.bind(this)}>
 				<input type="text" placeholder="what do I need to do?" ref="createInput" />
-				<button>Cte</button>
+				<button>Create</button>
 			</form>
 		)
 	}

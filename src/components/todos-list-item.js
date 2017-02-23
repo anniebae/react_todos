@@ -21,7 +21,7 @@ class TodosListItem extends Component {
 		return (
 			<td>
 				<button onClick={this.onEditClick.bind(this)}>Edit</button>
-				<button>Delete</button>
+				<button>Dte</button>
 			</td>
 		)
 	}
