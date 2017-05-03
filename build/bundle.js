@@ -9544,6 +9544,12 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var tasksList = ["Task 1", "Task 2", "Task 3"];
 
+var tasks = localStorage.getItem('storedTasks');
+
+if (tasks) {
+	tasksList = JSON.parse(tasks);
+}
+
 _reactDom2.default.render(_react2.default.createElement(_main.Todo, { tasks: tasksList }), document.getElementById('todo'));
 
 /***/ }),
@@ -22049,8 +22055,9 @@ var Todo = exports.Todo = function (_Component) {
 		key: 'updateList',
 		value: function updateList(text) {
 			var updatedTasks = this.state.tasks;
-			updatedTasks.push(text);
+			updatedTasks.unshift(text);
 			this.setState({ tasks: updatedTasks });
+			this.updateLocalStorage(updatedTasks);
 		}
 	}, {
 		key: 'removeTask',
@@ -22058,6 +22065,13 @@ var Todo = exports.Todo = function (_Component) {
 			var updatedTasks = this.state.tasks;
 			updatedTasks.splice(updatedTasks.indexOf(text), 1);
 			this.setState({ tasks: updatedTasks });
+			this.updateLocalStorage(updatedTasks);
+		}
+	}, {
+		key: 'updateLocalStorage',
+		value: function updateLocalStorage(updatedTasks) {
+			console.log('tasks updated');
+			localStorage.setItem('storedTasks', JSON.stringify(updatedTasks));
 		}
 	}, {
 		key: 'render',
