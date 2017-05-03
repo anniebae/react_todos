@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import {AddNewTask} from './addtask'
-import {TodoAppList} from './applist'
+import {ToDoAppList} from './applist'
 
 export class Todo extends Component {
 	constructor() {
@@ -11,7 +11,7 @@ export class Todo extends Component {
 			<div>
 				<h1>Todo App</h1>
 				<AddNewTask />
-				<TodoAppList />
+				<ToDoAppList tasks={this.props.tasks} />
 			</div>
 		)
 	}

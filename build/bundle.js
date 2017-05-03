@@ -9542,7 +9542,9 @@ var _main = __webpack_require__(184);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-_reactDom2.default.render(_react2.default.createElement(_main.Todo, null), document.getElementById('todo'));
+var tasksList = ["Task 1", "Task 2", "Task 3"];
+
+_reactDom2.default.render(_react2.default.createElement(_main.Todo, { tasks: tasksList }), document.getElementById('todo'));
 
 /***/ }),
 /* 83 */
@@ -22050,7 +22052,7 @@ var Todo = exports.Todo = function (_Component) {
 					'Todo App'
 				),
 				_react2.default.createElement(_addtask.AddNewTask, null),
-				_react2.default.createElement(_applist.TodoAppList, null)
+				_react2.default.createElement(_applist.ToDoAppList, { tasks: this.props.tasks })
 			);
 		}
 	}]);
@@ -22117,7 +22119,7 @@ var AddNewTask = exports.AddNewTask = function (_Component) {
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
-exports.TodoAppList = undefined;
+exports.ToDoAppList = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -22133,38 +22135,36 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var TodoAppList = exports.TodoAppList = function (_Component) {
-	_inherits(TodoAppList, _Component);
+var ToDoAppList = exports.ToDoAppList = function (_Component) {
+	_inherits(ToDoAppList, _Component);
 
-	function TodoAppList() {
-		_classCallCheck(this, TodoAppList);
+	function ToDoAppList() {
+		_classCallCheck(this, ToDoAppList);
 
-		return _possibleConstructorReturn(this, (TodoAppList.__proto__ || Object.getPrototypeOf(TodoAppList)).call(this));
+		return _possibleConstructorReturn(this, (ToDoAppList.__proto__ || Object.getPrototypeOf(ToDoAppList)).call(this));
 	}
 
-	_createClass(TodoAppList, [{
+	_createClass(ToDoAppList, [{
 		key: 'render',
 		value: function render() {
+			var items = this.props.tasks.map(function (elem, i) {
+				return _react2.default.createElement(
+					'li',
+					{ key: i },
+					elem
+				);
+			});
 			// items = this.props.tasks.map(() => return <li>items)
 			// get items dynamically from its parent
 			return _react2.default.createElement(
 				'ul',
 				null,
-				_react2.default.createElement(
-					'li',
-					null,
-					'Task 1'
-				),
-				_react2.default.createElement(
-					'li',
-					null,
-					'Task 2'
-				)
+				items
 			);
 		}
 	}]);
 
-	return TodoAppList;
+	return ToDoAppList;
 }(_react.Component);
 
 /***/ })
