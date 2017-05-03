@@ -22034,13 +22034,24 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var Todo = exports.Todo = function (_Component) {
 	_inherits(Todo, _Component);
 
-	function Todo() {
+	function Todo(props) {
 		_classCallCheck(this, Todo);
 
-		return _possibleConstructorReturn(this, (Todo.__proto__ || Object.getPrototypeOf(Todo)).call(this));
+		var _this = _possibleConstructorReturn(this, (Todo.__proto__ || Object.getPrototypeOf(Todo)).call(this));
+
+		_this.state = { tasks: props.tasks };
+		_this.updateList = _this.updateList.bind(_this);
+		return _this;
 	}
 
 	_createClass(Todo, [{
+		key: 'updateList',
+		value: function updateList(text) {
+			var updatedTasks = this.state.tasks;
+			updatedTasks.push(text);
+			this.setState({ tasks: updatedTasks });
+		}
+	}, {
 		key: 'render',
 		value: function render() {
 			return _react2.default.createElement(
@@ -22051,8 +22062,8 @@ var Todo = exports.Todo = function (_Component) {
 					null,
 					'Todo App'
 				),
-				_react2.default.createElement(_addtask.AddNewTask, null),
-				_react2.default.createElement(_applist.ToDoAppList, { tasks: this.props.tasks })
+				_react2.default.createElement(_addtask.AddNewTask, { updateList: this.updateList }),
+				_react2.default.createElement(_applist.ToDoAppList, { tasks: this.state.tasks })
 			);
 		}
 	}]);
@@ -22092,16 +22103,28 @@ var AddNewTask = exports.AddNewTask = function (_Component) {
 	function AddNewTask() {
 		_classCallCheck(this, AddNewTask);
 
-		return _possibleConstructorReturn(this, (AddNewTask.__proto__ || Object.getPrototypeOf(AddNewTask)).call(this));
+		var _this = _possibleConstructorReturn(this, (AddNewTask.__proto__ || Object.getPrototypeOf(AddNewTask)).call(this));
+
+		_this.justSubmitted = _this.justSubmitted.bind(_this);
+		return _this;
 	}
 
 	_createClass(AddNewTask, [{
-		key: "render",
+		key: 'justSubmitted',
+		value: function justSubmitted(event) {
+			event.preventDefault();
+			var input = event.target.querySelector('input');
+			var value = input.value;
+			input.value = '';
+			this.props.updateList(value);
+		}
+	}, {
+		key: 'render',
 		value: function render() {
 			return _react2.default.createElement(
-				"form",
-				null,
-				_react2.default.createElement("input", { type: "text" })
+				'form',
+				{ onSubmit: this.justSubmitted },
+				_react2.default.createElement('input', { type: 'text' })
 			);
 		}
 	}]);
