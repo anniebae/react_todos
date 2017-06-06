@@ -13,7 +13,7 @@ export class AddNewTask extends Component {
 		input.value = '';
 		this.props.updateList(value);
 	}
-	
+		
 	render() {
 		return(
 			<form onSubmit={this.justSubmitted}>
